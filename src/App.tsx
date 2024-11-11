@@ -18,7 +18,7 @@ function App() {
   return (
     <>
 
-      <div className='h-screen flex items-center justify-center gap-8 flex-col'>
+      <div className='h-screen flex items-center justify-center gap-8 flex-col bg-slate-200'>
 
         <div className="flex gap-2">
 
@@ -28,10 +28,20 @@ function App() {
         </div>
 
         {weather ? (
-          <div className='h-2 flex items-center justify-center gap-2'>
+          <div className='bg-white rounded-md w-80 h-72 flex flex-col items-center justify-center gap-2 shadow-lg'>
 
-            <h1>{weather.current.temp_c}ºC</h1>
-            <img src={weather.current.condition.icon} alt="" />
+            <div>
+
+
+              <strong className="text-2xl">{Math.round(weather.current.temp_c)}ºC  </strong>
+              <img src={weather.current.condition.icon} alt="" />
+
+
+            </div>
+
+            <h1 className="text-lg"><strong>{weather.location.name}</strong></h1>
+            <h2>{weather.location.region}, {weather.location.country}</h2>
+
 
           </div>
         ) : <h1>Digite alguma cidade...</h1>

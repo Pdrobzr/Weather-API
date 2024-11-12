@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { Weather } from "./interfaces/inteface";
+import Swal from "sweetalert2";
 
 function App() {
 
@@ -10,9 +11,30 @@ function App() {
 
 
   const fetchApi = async () => {
-    const response = await fetch(`http://api.weatherapi.com/v1//current.json?key=${KEY}&q=${city}`);
-    const data = await response.json();
-    setWeather(data);
+
+    try {
+      const response = await fetch(`http://api.weatherapi.com/v1//current.json?key=${KEY}&q=${city}`);
+      if (response.status === 400) {
+
+        setCity('');
+
+        Swal.fire({
+          title: 'Erro!',
+          text: 'Cidade digitada inválida!',
+          icon: 'error',
+          confirmButtonText: 'Ok'
+        });
+
+        return;
+
+      }
+      const data = await response.json();
+      setWeather(data);
+    }
+    catch (error) {
+      console.log(error);
+    }
+
   }
 
   return (
@@ -20,9 +42,12 @@ function App() {
 
       <div className='h-screen flex items-center justify-center gap-8 flex-col bg-slate-200'>
 
+      <h1 className="font-bold text-3xl">Weather APP</h1>
+
         <div className="flex gap-2">
 
-          <input className='h-8 border-2 border-black rounded-md' type="text" onChange={(e) => setCity(e.target.value)} />
+          
+          <input className='h-8 border-2 border-black rounded-md' value={city} type="text" onChange={(e) => setCity(e.target.value)} />
           <button className="h-8 w-16 border-2 rounded-md bg-blue-500 text-white" onClick={fetchApi} >Enviar</button>
 
         </div>

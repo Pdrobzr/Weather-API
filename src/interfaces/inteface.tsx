@@ -1,6 +1,9 @@
+import { ReactNode } from "react";
+
 export interface Weather {
     current: Current,
     location: Location
+    children?: ReactNode;
 }
 
 interface Location {

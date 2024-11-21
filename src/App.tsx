@@ -2,6 +2,7 @@ import { useState } from "react"
 import { Weather } from "./interfaces/inteface";
 import Swal from "sweetalert2";
 import { IoIosCloseCircle } from "react-icons/io";
+import Card from "./components/Card";
 
 function App() {
 
@@ -59,20 +60,12 @@ function App() {
         </div>
 
         {weather ? (
-          <div className='bg-white rounded-md w-80 h-72 flex flex-col items-center gap-2 shadow-lg justify-center relative'>
+          <Card location={weather.location} current={weather.current}>
+            <div className="absolute right-0 top-0">
+              <button onClick={closeCard}> <IoIosCloseCircle /> </button>
+            </div>
+          </Card>
 
-          <div className="absolute right-0 top-0">
-            <button onClick={closeCard}> <IoIosCloseCircle /> </button>
-          </div>
-        
-          <strong className="text-2xl">{Math.round(weather.current.temp_c)}ºC</strong>
-          <img src={weather.current.condition.icon} alt="" />
-        
-          <h1 className="text-lg"><strong>{weather.location.name}</strong></h1>
-          <h2>{weather.location.region}, {weather.location.country}</h2>
-        
-        </div>
-        
         ) : <h1>Digite alguma cidade...</h1>
         }
       </div>

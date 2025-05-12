@@ -1,6 +1,8 @@
 import { Weather } from "../interfaces/inteface"
 
 const Card = ({ current, location, children }: Weather) => {
+
+    
     return (
         <div className='bg-white rounded-md w-80 h-72 flex flex-col items-center gap-2 shadow-lg justify-center relative'>
 

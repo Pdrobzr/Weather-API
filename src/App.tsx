@@ -54,7 +54,7 @@ function App() {
         <div className="flex gap-2">
 
 
-          <input className='h-8 border-2 border-black rounded-md' value={city} type="text" onChange={(e) => setCity(e.target.value)} />
+          <input className='h-8 pl-1 border-2 border-black rounded-md' value={city} type="text" onChange={(e) => setCity(e.target.value)} />
           <button className="h-8 w-16 border-2 rounded-md bg-blue-500 text-white hover:bg-blue-700" onClick={fetchApi} >Enviar</button>
 
         </div>

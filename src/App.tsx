@@ -15,7 +15,7 @@ function App() {
   const fetchApi = async () => {
 
     try {
-      const response = await fetch(`http://api.weatherapi.com/v1//current.json?key=${KEY}&q=${city}`);
+      const response = await fetch(`https://api.weatherapi.com/v1//current.json?key=${KEY}&q=${city}`);
       if (response.status === 400) {
 
         setCity('');
